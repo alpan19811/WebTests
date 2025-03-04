@@ -2,6 +2,8 @@ from pages.BasePage import BasePage
 from selenium.webdriver.common.by import By
 
 class LoginPageLocators:
+    LOGIN_TAB = (By.XPATH, '// *[ @ id = "login-5522540423"]')
+    QR_TAB = (By.XPATH, '// *[ @ id = "qrCode-5522540458"]')
     LOGIN_FIELD = (By.XPATH, '//*[@id="field_email"]') # если есть ID, то можно переписать код By.ID, "field_email"
     PASSWORD_FIELD = (By.XPATH, '//*[@id="field_password"]')
     LOG_IN_BUTTON = (By.XPATH, '//*[@id="tabpanel-login-5522540423"]/form/div[4]/input')

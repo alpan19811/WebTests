@@ -19,6 +19,8 @@ class LoginPageLocators:
     ERROR_TEXT = (By.XPATH, '//*[@class="input-e login_error"]')
 
 
+
+
 class LoginPageHelper(BasePage):
     def __init__(self, driver):
         self.driver = driver

@@ -17,9 +17,9 @@ class LoginPageLocators:
     MAIL_BUTTON = (By.XPATH, '//*[@data-l="t,mailru"]')
     YANDEX_BUTTON = (By.XPATH, '//*[@data-l="t,yandex"]')
     ERROR_TEXT = (By.XPATH, '//*[@class="input-e login_error"]')
-
-
-
+    GO_BACK_BUTTON = (By.XPATH, '//*[@data-l="t,cancel"]')
+    SUPPORT_BUTTON = (By.XPATH, '//*[@class="external-oauth-login-help portlet_f"]')
+    PROFILE_RECOVERY_BUTTON = (By.NAME, '//*[@name="st.go_to_recovery"]')
 
 class LoginPageHelper(BasePage):
     def __init__(self, driver):
@@ -27,6 +27,8 @@ class LoginPageHelper(BasePage):
         self.check_page()
 
     def check_page(self):
+        with allure.step('Проверка корректности загрузки страницы'):
+            self.attach_screenshot()
         self.find_element(LoginPageLocators.LOGIN_TAB)
         self.find_element(LoginPageLocators.QR_TAB)
         self.find_element(LoginPageLocators.LOGIN_FIELD)
@@ -48,3 +50,20 @@ class LoginPageHelper(BasePage):
     def get_error_text(self):
         self.attach_screenshot()
         return self.find_element(LoginPageLocators.ERROR_TEXT).text
+
+    @allure.step('Заполняем поле логин')
+    def type_login(self, login):
+        self.find_element(LoginPageLocators.LOGIN_FIELD).send_keys(login)
+        self.attach_screenshot()
+
+    @allure.step('Заполняем поле пароль')
+    def type_password(self, password):
+        self.find_element(LoginPageLocators.PASSWORD_FIELD).send_keys(password)
+        self.attach_screenshot()
+
+    @allure.step('Переходим к восстановлению')
+    def click_recovery(self):
+        self.attach_screenshot()
+        self.find_element(LoginPageLocators.PROFILE_RECOVERY_BUTTON).click()
+
+

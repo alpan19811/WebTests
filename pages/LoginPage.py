@@ -19,7 +19,7 @@ class LoginPageLocators:
     ERROR_TEXT = (By.XPATH, '//*[@class="input-e login_error"]')
     GO_BACK_BUTTON = (By.XPATH, '//*[@data-l="t,cancel"]')
     SUPPORT_BUTTON = (By.XPATH, '//*[@class="external-oauth-login-help portlet_f"]')
-    PROFILE_RECOVERY_BUTTON = (By.NAME, '//*[@name="st.go_to_recovery"]')
+    PROFILE_RECOVERY_BUTTON = (By.XPATH, '//div[@class="form-actions"]//*[@name="st.go_to_recovery"]')
 
 class LoginPageHelper(BasePage):
     def __init__(self, driver):

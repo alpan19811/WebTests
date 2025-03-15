@@ -26,15 +26,17 @@ class RegistrationPageHelper(BasePage):
 
     def select_random_country(self):
         with allure.step('Выбор случайной страны'):
-            random_number = random.randint(0,212)
-            self.find_element(RegistrtionPaageLocators.COUNTRY_LIST).click()
-            country_items = self.find_elements(RegistrtionPaageLocators.COUNTRY_ITEM)
-            country_code = country_items[random_number].get_attribute('text')
-            country_items[random_number].click()
-            return country_code
+            self.attach_screenshot()
+        random_number = random.randint(0,212)
+        self.find_element(RegistrtionPaageLocators.COUNTRY_LIST).click()
+        country_items = self.find_elements(RegistrtionPaageLocators.COUNTRY_ITEM)
+        country_code = country_items[random_number].get_attribute('text')
+        country_items[random_number].click()
+        return country_code
 
     def get_phone_field_value(self):
         with allure.step('Получение значения поля телефона'):
+            self.attach_screenshot()
             return self.find_element(RegistrtionPaageLocators.PHONE_FIELD).get_attribute('value')
 
 

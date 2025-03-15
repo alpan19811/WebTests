@@ -18,21 +18,24 @@ class RegistrationPageHelper(BasePage):
 
     def check_page(self):
         with allure.step('Проверка корректности загрузки страницы'):
-            self.find_element(RegistrtionPaageLocators.PHONE_FIELD)
-            self.find_element(RegistrtionPaageLocators.COUNTRY_LIST)
-            self.find_element(RegistrtionPaageLocators.SUBMIT_BUTTON)
-            self.find_element(RegistrtionPaageLocators.SUPPORT_BUTTON)
+            self.attach_screenshot()
+        self.find_element(RegistrtionPaageLocators.PHONE_FIELD)
+        self.find_element(RegistrtionPaageLocators.COUNTRY_LIST)
+        self.find_element(RegistrtionPaageLocators.SUBMIT_BUTTON)
+        self.find_element(RegistrtionPaageLocators.SUPPORT_BUTTON)
 
     def select_random_country(self):
-        random_number = random.randint(0,212)
-        self.find_element(RegistrtionPaageLocators.COUNTRY_LIST).click()
-        country_items = self.find_elements(RegistrtionPaageLocators.COUNTRY_ITEM)
-        country_code = country_items[random_number].get_attribute('text')
-        country_items[random_number].click()
-        return country_code
+        with allure.step('Выбор случайной страны'):
+            random_number = random.randint(0,212)
+            self.find_element(RegistrtionPaageLocators.COUNTRY_LIST).click()
+            country_items = self.find_elements(RegistrtionPaageLocators.COUNTRY_ITEM)
+            country_code = country_items[random_number].get_attribute('text')
+            country_items[random_number].click()
+            return country_code
 
     def get_phone_field_value(self):
-        return self.find_element(RegistrtionPaageLocators.PHONE_FIELD).get_attribute('value')
+        with allure.step('Получение значения поля телефона'):
+            return self.find_element(RegistrtionPaageLocators.PHONE_FIELD).get_attribute('value')
 
 
 

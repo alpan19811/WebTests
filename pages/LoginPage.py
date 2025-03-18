@@ -1,6 +1,5 @@
 import allure
-
-from pages.BasePage import BasePage
+from pages.BasePage import BasePageHelper
 from selenium.webdriver.common.by import By
 
 
@@ -21,8 +20,9 @@ class LoginPageLocators:
     SUPPORT_BUTTON = (By.XPATH, '//*[@data-l="t,support"]')
     PROFILE_RECOVERY_BUTTON = (By.XPATH, '//div[@class="form-actions"]//*[@name="st.go_to_recovery"]')
 
-class LoginPageHelper(BasePage):
-    def __init__(self, driver):
+class LoginPageHelper(BasePageHelper):
+    def __init__(self, driver)\
+            :
         self.driver = driver
         self.check_page()
 
